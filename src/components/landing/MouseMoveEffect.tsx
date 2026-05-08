@@ -1,25 +1,30 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 
 export default function MouseMoveEffect() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [mousePosition, setMousePosition] = useState({ x: -1000, y: -1000 })
+
+  const handleMouseMove = useCallback((event: MouseEvent) => {
+    setMousePosition({ x: event.clientX, y: event.clientY })
+  }, [])
 
   useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      setMousePosition({ x: event.clientX, y: event.clientY })
+    let raf: number
+    const throttled = (e: MouseEvent) => {
+      cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(() => handleMouseMove(e))
     }
-
-    window.addEventListener("mousemove", handleMouseMove)
-
+    window.addEventListener("mousemove", throttled, { passive: true })
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove)
+      window.removeEventListener("mousemove", throttled)
+      cancelAnimationFrame(raf)
     }
-  }, [])
+  }, [handleMouseMove])
 
   return (
     <div
-      className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300"
+      className="pointer-events-none fixed inset-0 z-30"
       style={{
-        background: `radial-gradient(600px at ${mousePosition.x}px ${mousePosition.y}px, rgba(29, 78, 216, 0.15), transparent 80%)`,
+        background: `radial-gradient(400px at ${mousePosition.x}px ${mousePosition.y}px, rgba(251,191,36,0.06), transparent 80%)`,
       }}
     />
   )

@@ -7,6 +7,7 @@ import {
   HowWeWork,
   InnovativeServices,
   ROICalculatorHome,
+  Reviews,
   AnimatedFooter,
   MouseMoveEffect,
 } from "@/components/landing"
@@ -25,6 +26,7 @@ export default function Index() {
         <div id="how"><HowWeWork /></div>
         <InnovativeServices />
         <div id="calculator"><ROICalculatorHome /></div>
+        <Reviews />
         <AnimatedFooter />
       </div>
     </div>

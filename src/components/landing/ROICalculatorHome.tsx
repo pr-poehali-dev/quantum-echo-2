@@ -46,7 +46,7 @@ export default function ROICalculatorHome() {
   const dir = directions.find((d) => d.id === selectedDirection)!
   const earnings = selectedCount * dir.pricePerUnit
 
-  const maxCount = selectedDirection === "yandex" ? 20 : 50
+  const maxCount = selectedDirection === "yandex" ? 100 : selectedDirection === "card" ? 100 : 200
 
   return (
     <section className="py-24 bg-black relative backdrop-blur-sm">
