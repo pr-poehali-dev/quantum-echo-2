@@ -22,9 +22,9 @@ export default function Index() {
       <div className="relative z-10">
         <Navbar />
         <Hero />
-        <HowWeWork />
+        <div id="how"><HowWeWork /></div>
         <InnovativeServices />
-        <ROICalculatorHome />
+        <div id="calculator"><ROICalculatorHome /></div>
         <AnimatedFooter />
       </div>
     </div>

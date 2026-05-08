@@ -13,11 +13,10 @@ export default function Navbar() {
         className="relative bg-gray-900/60 backdrop-blur-md border rounded-2xl shadow-lg overflow-hidden"
         animate={{
           borderColor: [
-            "rgba(59, 130, 246, 0.3)",
-            "rgba(147, 51, 234, 0.3)",
-            "rgba(236, 72, 153, 0.3)",
-            "rgba(34, 197, 94, 0.3)",
-            "rgba(59, 130, 246, 0.3)",
+            "rgba(251, 191, 36, 0.3)",
+            "rgba(245, 158, 11, 0.3)",
+            "rgba(234, 179, 8, 0.3)",
+            "rgba(251, 191, 36, 0.3)",
           ],
         }}
         transition={{
@@ -26,16 +25,13 @@ export default function Navbar() {
           ease: "linear",
         }}
       >
-        {/* Animated border glow */}
         <motion.div
           className="absolute inset-0 rounded-2xl"
           animate={{
             boxShadow: [
-              "0 0 20px rgba(59, 130, 246, 0.2)",
-              "0 0 20px rgba(147, 51, 234, 0.2)",
-              "0 0 20px rgba(236, 72, 153, 0.2)",
-              "0 0 20px rgba(34, 197, 94, 0.2)",
-              "0 0 20px rgba(59, 130, 246, 0.2)",
+              "0 0 20px rgba(251, 191, 36, 0.15)",
+              "0 0 20px rgba(245, 158, 11, 0.15)",
+              "0 0 20px rgba(251, 191, 36, 0.15)",
             ],
           }}
           transition={{
@@ -49,36 +45,33 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <a href="/" className="flex items-center space-x-3">
-                <span className="text-xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                  Pulse Digital
+                <span className="text-xl font-bold bg-gradient-to-r from-yellow-400 via-amber-400 to-orange-400 bg-clip-text text-transparent">
+                  EarnHub
                 </span>
               </a>
             </div>
 
             <div className="hidden md:block">
               <div className="flex items-center space-x-8">
-                <a href="#services" className="text-sm text-gray-300 hover:text-blue-400 transition-colors">
-                  Услуги
+                <a href="#services" className="text-sm text-gray-300 hover:text-yellow-400 transition-colors">
+                  Направления
                 </a>
-                <a href="#artists" className="text-sm text-gray-300 hover:text-purple-400 transition-colors">
-                  Клиенты
+                <a href="#how" className="text-sm text-gray-300 hover:text-amber-400 transition-colors">
+                  Как это работает
                 </a>
-                <a href="#success-stories" className="text-sm text-gray-300 hover:text-green-400 transition-colors">
-                  Кейсы
+                <a href="#calculator" className="text-sm text-gray-300 hover:text-orange-400 transition-colors">
+                  Калькулятор
                 </a>
-                <a href="#contact" className="text-sm text-gray-300 hover:text-orange-400 transition-colors">
+                <a href="#contact" className="text-sm text-gray-300 hover:text-yellow-400 transition-colors">
                   Контакты
                 </a>
               </div>
             </div>
 
             <div className="hidden md:flex items-center space-x-4">
-              <Button variant="ghost" className="text-sm text-gray-300 hover:text-white">
-                Войти
-              </Button>
-              <a href="#get-started">
-                <AnimatedButton size="sm" className="bg-white text-black hover:bg-gray-100">
-                  Начать
+              <a href="https://t.me/hanzi77" target="_blank" rel="noopener noreferrer">
+                <AnimatedButton size="sm" className="bg-yellow-400 text-black hover:bg-yellow-300 font-bold">
+                  Написать @hanzi77
                 </AnimatedButton>
               </a>
             </div>
@@ -91,25 +84,16 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile menu */}
         {isMenuOpen && (
           <div className="md:hidden border-t border-gray-700/50 bg-gray-900/80 backdrop-blur-md rounded-b-2xl">
             <div className="px-6 py-4 space-y-3">
-              <a href="#services" className="block text-gray-300 hover:text-blue-400">
-                Услуги
-              </a>
-              <a href="#artists" className="block text-gray-300 hover:text-purple-400">
-                Клиенты
-              </a>
-              <a href="#success-stories" className="block text-gray-300 hover:text-green-400">
-                Кейсы
-              </a>
-              <a href="#contact" className="block text-gray-300 hover:text-orange-400">
-                Контакты
-              </a>
+              <a href="#services" className="block text-gray-300 hover:text-yellow-400">Направления</a>
+              <a href="#how" className="block text-gray-300 hover:text-amber-400">Как это работает</a>
+              <a href="#calculator" className="block text-gray-300 hover:text-orange-400">Калькулятор</a>
+              <a href="#contact" className="block text-gray-300 hover:text-yellow-400">Контакты</a>
               <div className="pt-3 border-t border-gray-700">
-                <a href="#get-started" className="block">
-                  <AnimatedButton className="w-full bg-white text-black hover:bg-gray-100">Начать</AnimatedButton>
+                <a href="https://t.me/hanzi77" target="_blank" rel="noopener noreferrer" className="block">
+                  <AnimatedButton className="w-full bg-yellow-400 text-black hover:bg-yellow-300 font-bold">Написать @hanzi77</AnimatedButton>
                 </a>
               </div>
             </div>

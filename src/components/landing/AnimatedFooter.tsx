@@ -1,23 +1,11 @@
 import type React from "react"
-import { useState } from "react"
 import { motion } from "framer-motion"
-import { Instagram, Twitter, Linkedin, Youtube, Mail, Phone, MapPin, ArrowRight } from "lucide-react"
-import AnimatedButton from "./AnimatedButton"
+import { Send, Clock, DollarSign } from "lucide-react"
 
 export default function AnimatedFooter() {
-  const [email, setEmail] = useState("")
-  const [isSubscribed, setIsSubscribed] = useState(false)
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubscribed(true)
-    setTimeout(() => setIsSubscribed(false), 3000)
-    setEmail("")
-  }
-
   return (
     <footer id="contact" className="relative bg-black border-t border-gray-800/50">
-      {/* Newsletter Section */}
+      {/* CTA Section */}
       <div className="relative z-10 border-b border-gray-800/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <motion.div
@@ -27,42 +15,29 @@ export default function AnimatedFooter() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h3 className="text-3xl sm:text-4xl font-bold text-white mb-4">Будьте в курсе трендов</h3>
+            <h3 className="text-3xl sm:text-4xl font-bold text-white mb-4">Готов начать зарабатывать?</h3>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Получайте эксклюзивные инсайты, стратегии развития бренда и советы по росту каждую неделю.
+              Напиши мне в Telegram — отвечу, выдам реферальную ссылку и расскажу всё подробно.
             </p>
           </motion.div>
 
-          <motion.form
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            onSubmit={handleSubscribe}
-            className="max-w-md mx-auto"
+            className="flex justify-center"
           >
-            <div className="flex gap-4">
-              <div className="flex-1 relative">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Ваш email"
-                  className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
-                  required
-                />
-              </div>
-              <AnimatedButton
-                type="submit"
-                className="bg-white text-black hover:bg-gray-100"
-              >
-                <ArrowRight className="h-5 w-5" />
-              </AnimatedButton>
-            </div>
-            {isSubscribed && (
-              <p className="text-green-400 text-center mt-4 animate-fade-in">Спасибо за подписку!</p>
-            )}
-          </motion.form>
+            <a
+              href="https://t.me/hanzi77"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-yellow-400 hover:bg-yellow-300 text-black font-bold py-4 px-8 rounded-xl text-lg transition-colors"
+            >
+              <Send className="w-5 h-5" />
+              Написать @hanzi77 в Telegram
+            </a>
+          </motion.div>
         </div>
       </div>
 
@@ -78,74 +53,48 @@ export default function AnimatedFooter() {
             className="space-y-8 text-center lg:text-left"
           >
             <div className="group flex justify-center lg:justify-start">
-              <span className="text-3xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent transition-transform duration-300 group-hover:scale-105">
-                Pulse Digital
+              <span className="text-3xl font-bold bg-gradient-to-r from-yellow-400 via-amber-400 to-orange-400 bg-clip-text text-transparent transition-transform duration-300 group-hover:scale-105">
+                EarnHub
               </span>
             </div>
             <p className="text-gray-400 text-lg leading-relaxed max-w-md mx-auto lg:mx-0">
-              Помогаем творческим профессионалам и предпринимателям создавать сильные бренды,
-              обеспечивающие реальный рост на конкурентном рынке.
+              Реальный заработок без вложений и рисков. Дебетовые карты, курьеры Яндекс.Еды,
+              клиенты для инфографики — выбирай своё направление.
             </p>
 
-            {/* Social Links */}
-            <div className="flex space-x-6 justify-center lg:justify-start">
-              {[
-                { icon: Instagram, href: "#", label: "Instagram" },
-                { icon: Twitter, href: "#", label: "Twitter" },
-                { icon: Linkedin, href: "#", label: "LinkedIn" },
-                { icon: Youtube, href: "#", label: "YouTube" },
-              ].map(({ icon: Icon, href, label }, index) => (
-                <motion.div
-                  key={label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <a href={href} className="group relative" aria-label={label}>
-                    <div className="w-12 h-12 bg-gray-900 border border-gray-800 rounded-lg flex items-center justify-center group-hover:bg-gray-800 group-hover:border-gray-700 transition-colors">
-                      <Icon className="h-5 w-5 text-gray-400 group-hover:text-white transition-colors" />
-                    </div>
-                  </a>
-                </motion.div>
-              ))}
+            {/* Quick stats */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <div className="flex items-center space-x-2 text-gray-400">
+                <DollarSign className="w-5 h-5 text-yellow-400" />
+                <span>от 200₽ до 5000₽ за лида</span>
+              </div>
+              <div className="flex items-center space-x-2 text-gray-400">
+                <Clock className="w-5 h-5 text-yellow-400" />
+                <span>Выплата от 5 дней</span>
+              </div>
             </div>
           </motion.div>
 
           {/* Links and Contact */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-center sm:text-left">
-            {/* Quick Links */}
+            {/* Directions */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h4 className="text-lg font-semibold text-white mb-6">Услуги</h4>
+              <h4 className="text-lg font-semibold text-white mb-6">Направления</h4>
               <ul className="space-y-4">
                 {[
-                  "Разработка бренда",
-                  "Цифровой маркетинг",
-                  "Создание контента",
-                  "SEO и аналитика",
-                  "Ведение соцсетей",
-                  "Performance-маркетинг",
-                ].map((link, index) => (
-                  <motion.li
-                    key={link}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <a
-                      href="#"
-                      className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center justify-center sm:justify-start group"
-                    >
-                      <span className="w-0 group-hover:w-2 h-0.5 bg-blue-500 transition-all duration-200 mr-0 group-hover:mr-2" />
-                      {link}
-                    </a>
-                  </motion.li>
+                  { label: "Дебетовые карты", reward: "400₽" },
+                  { label: "Курьеры Яндекс.Еды", reward: "5000₽" },
+                  { label: "Клиенты инфографики", reward: "200₽" },
+                ].map((item) => (
+                  <li key={item.label} className="flex items-center justify-center sm:justify-between gap-2">
+                    <span className="text-gray-400">{item.label}</span>
+                    <span className="text-yellow-400 font-semibold">{item.reward}</span>
+                  </li>
                 ))}
               </ul>
             </motion.div>
@@ -160,24 +109,22 @@ export default function AnimatedFooter() {
               <h4 className="text-lg font-semibold text-white mb-6">Контакты</h4>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3 text-gray-400 justify-center sm:justify-start">
-                  <Mail className="h-5 w-5 text-blue-500" />
-                  <span>hello@pulsedigital.ru</span>
-                </div>
-                <div className="flex items-center space-x-3 text-gray-400 justify-center sm:justify-start">
-                  <Phone className="h-5 w-5 text-blue-500" />
-                  <span>+7 (495) 123-45-67</span>
-                </div>
-                <div className="flex items-center space-x-3 text-gray-400 justify-center sm:justify-start">
-                  <MapPin className="h-5 w-5 text-blue-500" />
-                  <span>Москва, Россия</span>
+                  <Send className="h-5 w-5 text-yellow-400" />
+                  <a href="https://t.me/hanzi77" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-400 transition-colors">
+                    @hanzi77 в Telegram
+                  </a>
                 </div>
               </div>
 
               <div className="mt-8">
-                <a href="#get-started">
-                  <AnimatedButton className="w-full bg-white text-black hover:bg-gray-100">
-                    Начать проект
-                  </AnimatedButton>
+                <a href="https://t.me/hanzi77" target="_blank" rel="noopener noreferrer">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full bg-yellow-400 hover:bg-yellow-300 text-black font-bold py-3 px-6 rounded-xl transition-colors"
+                  >
+                    Написать сейчас
+                  </motion.button>
                 </a>
               </div>
             </motion.div>
@@ -194,19 +141,9 @@ export default function AnimatedFooter() {
         >
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0 text-center sm:text-left">
             <p className="text-gray-500 text-sm">
-              {new Date().getFullYear()} Pulse Digital. Все права защищены.
+              © 2024 EarnHub. Реферальный заработок без вложений.
             </p>
-            <div className="flex space-x-6 text-sm">
-              <a href="#" className="text-gray-500 hover:text-white transition-colors">
-                Политика конфиденциальности
-              </a>
-              <a href="#" className="text-gray-500 hover:text-white transition-colors">
-                Условия использования
-              </a>
-              <a href="#" className="text-gray-500 hover:text-white transition-colors">
-                Cookies
-              </a>
-            </div>
+            <p className="text-gray-600 text-sm">Telegram: @hanzi77</p>
           </div>
         </motion.div>
       </div>
